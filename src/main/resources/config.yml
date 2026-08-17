@@ -1,0 +1,68 @@
+# WardenMenu — всё меню тут. Кнопка (action):
+#   submenu:<id>  — открыть подменю
+#   command:<cmd> — выполнить команду от игрока
+#   link:<url>    — кинуть кликабельную ссылку в чат
+#   stats         — своя статистика
+#   top:<kills|playtime|deaths> — лидерборд
+#   text / (нет)  — просто инфо (lore), без действия
+# Слоты: ряд×9 (0..). rows: 1-6.
+
+tops:
+  refresh-minutes: 10
+  size: 10
+
+menus:
+  main:
+    title: "&8&lМЕНЮ WARDEN"
+    rows: 5
+    items:
+      # ряд 1 — инфо/сообщество
+      "11": { material: PLAYER_HEAD,  name: "&a&lСоц-сети",       lore: ["&7Сайт, Telegram, YouTube"],  action: "submenu:social" }
+      "13": { material: WRITTEN_BOOK, name: "&e&lНовичку",        lore: ["&7С чего начать"],             action: "submenu:newbie" }
+      "15": { material: FILLED_MAP,   name: "&2&lВеб-карта",      lore: ["&7Карта мира в браузере"],     action: "link:http://wardensmp.fun:8080" }
+      # ряд 2 — личное/фичи
+      "20": { material: NETHER_STAR,  name: "&d&lКосметика спонсора", lore: ["&7Свечение, питомцы, партиклы,", "&7аксессуары"],       action: "command:spons open" }
+      "22": { material: CHEST,        name: "&a&lЕжедневный бонус", lore: ["&7Забери награду за вход", "&7Стрик растёт каждый день!"], action: "command:daily" }
+      "24": { material: NAME_TAG,     name: "&6&lПромокод",       lore: ["&7Активировать промокод"],     action: "command:promo" }
+      # ряд 3 — развлечение/статы
+      "29": { material: SPONGE,       name: "&9&lМячи",           lore: ["&7Футбол, баскет, волейбол"],  action: "submenu:balls" }
+      "31": { material: GOLD_INGOT,   name: "&6&lТопы",           lore: ["&7Лучшие игроки сервера"],     action: "submenu:tops" }
+      "33": { material: BOOK,         name: "&b&lМоя статистика", lore: ["&7Килы, смерти, онлайн"],      action: "stats" }
+
+  social:
+    title: "&8Соц-сети"
+    rows: 3
+    items:
+      "10": { material: GRASS_BLOCK,   name: "&a&lСАЙТ",              lore: ["&7wardensmp.fun"],        action: "link:https://wardensmp.fun" }
+      "12": { material: WRITABLE_BOOK, name: "&b&lTelegram — чат",    lore: ["&7Общий чат сервера"],    action: "link:https://t.me/warden_smp" }
+      "13": { material: BELL,          name: "&9&lTelegram — новости", lore: ["&7Анонсы и обновления"], action: "link:https://t.me/Wsmp_news" }
+      "14": { material: PLAYER_HEAD,   name: "&3&lTelegram — бот",    lore: ["&7Подать заявку на вход"], action: "link:https://t.me/WSMP_white_bot" }
+      "16": { material: REDSTONE,      name: "&c&lYouTube",           lore: ["&7Ролики сервера"],       action: "link:https://www.youtube.com/channel/UC1q568CUc4yFLXnHUoRAThw" }
+      "22": { material: ARROW,         name: "&7Назад",               action: "submenu:main" }
+
+  balls:
+    title: "&8Мячи"
+    rows: 3
+    items:
+      "11": { material: SPONGE,          name: "&e&lФутбольный мяч",     lore: ["&7Выдать футбольный мяч"],   action: "command:ball" }
+      "13": { material: ORANGE_CONCRETE, name: "&6&lБаскетбольный мяч",  lore: ["&7Выдать баскетбольный мяч"], action: "command:ball basket" }
+      "15": { material: WHITE_WOOL,      name: "&f&lВолейбольный мяч",   lore: ["&7Выдать волейбольный мяч"], action: "command:ball volley" }
+      "22": { material: ARROW,           name: "&7Назад", action: "submenu:main" }
+
+  newbie:
+    title: "&8Новичку"
+    rows: 3
+    items:
+      "11": { material: WRITTEN_BOOK, name: "&e&lПравила", lore: ["&7Прочитай перед игрой"], action: "link:https://wardensmp.fun/pravila-codex.html" }
+      "13": { material: COMPASS,      name: "&a&lС чего начать", lore: ["&7- Приватов НЕТ — это хардкор-PvP", "&7- Уйди пешком подальше от спавна", "&7- Найди место и строй базу, прячься", "&7- Осторожно с чужими игроками", "&7- Косметику спонсора смотри в меню"], action: "text" }
+      "15": { material: MAP,          name: "&b&lСайт", lore: ["&7wardensmp.fun"], action: "link:https://wardensmp.fun" }
+      "22": { material: ARROW,        name: "&7Назад", action: "submenu:main" }
+
+  tops:
+    title: "&8Топы сервера"
+    rows: 3
+    items:
+      "11": { material: DIAMOND_SWORD,  name: "&c&lТоп килов",    lore: ["&7Убийства игроков"],   action: "top:kills" }
+      "13": { material: CLOCK,          name: "&e&lТоп онлайна",  lore: ["&7Больше всех наиграли"], action: "top:playtime" }
+      "15": { material: SKELETON_SKULL, name: "&8&lТоп смертей",  lore: ["&7Кто чаще всех умирал"], action: "top:deaths" }
+      "22": { material: ARROW,          name: "&7Назад", action: "submenu:main" }

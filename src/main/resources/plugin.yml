@@ -1,0 +1,12 @@
+name: WardenMenu
+version: '1.0'
+main: fun.wardensmp.menu.WardenMenu
+api-version: '1.21'
+author: Daniil
+description: Хаб-меню сервера — /menu с вложенными GUI, соц-сети, топы, статистика.
+softdepend: [Vault]
+commands:
+  menu:
+    description: Меню сервера
+    usage: /menu
+    aliases: [m, hub]
